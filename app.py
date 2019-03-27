@@ -58,12 +58,15 @@ def s_choropleth(state):
     return render_template("state.html")
 
 
-@app.route("/charts")
-def s_choropleth():
-    """Return the charts"""
-    return render_template("charts.html")
+@app.route("/bubblechart")
+def bubble():
+    """Return the bubble chart"""
+    return render_template("bubblechart.html")
 
-
+@app.route("/linechart")
+def line():
+    """Return the line chart"""
+    return render_template("linechart.html")
 
 if __name__ == "__main__":
     app.run()
