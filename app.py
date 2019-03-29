@@ -18,44 +18,38 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-# need to make sure that the reference is updated for the structure
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/natality.sqlite"
-db = SQLAlchemy(app)
+engine = create_engine("sqlite:///Files/Data/birthrate3.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
-Base.prepare(db.engine, reflect=True)
+Base.prepare(engine, reflect=True)
 
-# need to make sure that the reference is updated for the structure
-# Save references to each table
-state = Base.classes.state
-national = Base.classes.national
+# Save reference to the table
+borthrate = Base.classes.birthrate
 
+# Create our session (link) from Python to the DB
+session = Session(engine) 
 
 @app.route("/")
 def index():
     """Return the homepage."""
-    return render_template("index.html")
+    results = session.query(birthrate).all()
+    print(results) 
+
+    # return render_template("index.html")
 
 
 @app.route("/data")
 def data():
-    """Return the state level data"""
+    """Return the data"""
     return render_template("data.html")
 
 
-@app.route("/nationalchoropleth")
-def n_choropleth(national):
+@app.route("/choropleth")
+def choropleth():
     """Return the choropleth for US"""
-    return render_template("national.html")
-
-
-
-@app.route("/statechoropleth")
-def s_choropleth(state):
-    """Return the choropleth for the state"""
-    return render_template("state.html")
+    return render_template("choropleth.html")
 
 
 @app.route("/bubblechart")
