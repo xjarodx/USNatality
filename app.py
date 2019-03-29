@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt 
 
+import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
@@ -14,7 +15,6 @@ from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
 
 #################################################
 # Database Setup
@@ -37,33 +37,32 @@ print(Base.classes.keys(), file=sys.stderr)
 @app.route("/")
 def index():
     """Return the homepage."""
-    results = session.query(birthrate.countylevel).all()
-    print(results) 
-   # return ''.join(Base.classes.keys())
-    return render_template("index.html")
+    # return (f"This is a test")
+    results = session.query().all()
+    return render_template("index.html", data=results)
 
 
-@app.route("/data")
-def data():
-    """Return the data"""
-    return render_template("data.html")
+# @app.route("/data")
+# def data():
+#     """Return the data"""
+#     return render_template("data.html")
 
 
-@app.route("/choropleth")
-def choropleth():
-    """Return the choropleth for US"""
-    return render_template("choropleth.html")
+# @app.route("/choropleth")
+# def choropleth():
+#     """Return the choropleth for US"""
+#     return render_template("choropleth.html")
 
 
-@app.route("/bubblechart")
-def bubble():
-    """Return the bubble chart"""
-    return render_template("bubblechart.html")
+# @app.route("/bubblechart")
+# def bubble():
+#     """Return the bubble chart"""
+#     return render_template("bubblechart.html")
 
-@app.route("/linechart")
-def line():
-    """Return the line chart"""
-    return render_template("linechart.html")
+# @app.route("/linechart")
+# def line():
+#     """Return the line chart"""
+#     return render_template("linechart.html")
 
 if __name__ == "__main__":
     app.run()
