@@ -1,5 +1,7 @@
 import os
 
+import sys
+
 import pandas as pd
 import numpy as np
 import datetime as dt 
@@ -26,18 +28,19 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-borthrate = Base.classes.birthrate
+birthrate = Base.classes
 
 # Create our session (link) from Python to the DB
 session = Session(engine) 
-
+#print (Base.classes.keys())
+print(Base.classes.keys(), file=sys.stderr)
 @app.route("/")
 def index():
     """Return the homepage."""
-    results = session.query(birthrate).all()
+    results = session.query(birthrate.countylevel).all()
     print(results) 
-
-    # return render_template("index.html")
+   # return ''.join(Base.classes.keys())
+    return render_template("index.html")
 
 
 @app.route("/data")
