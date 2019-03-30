@@ -1,4 +1,4 @@
-﻿ID,State,State Code,Year,Year Code,Month,Month Code,Births,Average Age of Mother,Average LMP Gestational Age
+﻿id,state,stateCode,year,yearCode,month,monthCode,births,aveAgeofMother,aveLMPGestationalAge
 1,Alabama,1,2013,2013,January,1,4934,26.34,38.17
 2,Alabama,1,2013,2013,February,2,4307,26.53,38.29
 3,Alabama,1,2013,2013,March,3,4581,26.55,38.25
