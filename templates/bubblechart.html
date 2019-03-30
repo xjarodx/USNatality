@@ -1,108 +1,74 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
 
-    <title>Bootstrap Visualization Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Baby</title>
 
-    <!-- Boostrap Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" media="screen">
+  <!-- Bootstrap CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<!--Add Navigation bar-->
 
-    <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" href="../assets/css/styles.css" media="screen">
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Baby Baby</a>
+      </div>
 
-  </head>
-
-  <body>
-    <!-- Start of navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid navbar-custom">
-
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <div class="col-xs-9 phone-nav">
-              <a class="navbar-brand" href="../index.html" id="logo">Lattitude</a>
-            </div>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right navbar-right-custom">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                 <li><a href="temp.html">Max Temperature</a></li>
-                  <li><a href="humidity.html">Humidity</a></li>
-                  <li><a href="cloudiness.html">Cloudiness</a></li>
-                  <li><a href="wind.html">Wind Speed</a></li>
-                </ul>
-              </li>
-              <li><a href="../comparison.html">Comparison</a></li>
-              <li><a href="../data.html">Data</a></li>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="index.html" class="dropdown-toggle" id="plotsDropdown" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false">Visualizations<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="plotsDropdown">
+              <li><a href="chloropleth.html">Chloropleth</a></li>
+              <li><a href="bubblechart.html">Bubble</a></li>
+              <li><a href="linechart.html">Line</a></li>
+              <!--<li><a href="wind_speed.html">Wind Speed</a></li>-->
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div>
-      </div><!-- /.container-fluid -->
-    </nav>
-    <!-- End of navbar -->
-
-    <!-- Start of container -->
-    <div class="container">
-      <section class="row">
-        <div class="col-md-8">
-          <article class="description-content">
-            <h1 class="description-header">Cloudiness</h1>
-            <hr class="description-hr"/>
-            <img src="../assets/images/Fig3.png" alt="" class="img-responsive"/>
-            <p>There is no strong relationship between latitude and cloudiness, however, it is interesting to see that a strong band of cities sits at 0, 80, and 100% cloudiness.</p>
-          </article>
-        </div>
-        <div class="col-md-4">
-
-          <!-- Start of Visualizations imageNav Area -->
-          <section id="imageNav-area">
-            <div class="imageNav-content">
-              <h2 class="imageNav-header">Visualizations</h2>
-              <hr />
-              <div id="images">
-                <a href="temp.html"><img src="../assets/images/Fig1.png" alt="Latitude vs. Max Temperature" class="imageNav-photo"></a>
-                <a href="humidity.html"><img src="../assets/images/Fig2.png" alt="Latitude vs. Humidity" class="imageNav-photo"></a>
-                <a href="cloudiness.html"><img src="../assets/images/Fig3.png" alt="Latitude vs. Cloudiness" class="imageNav-photo active"></a>
-                <a href="wind.html"><img src="../assets/images/Fig4.png" alt="Latitude vs. Wind Speed" class="imageNav-photo"></a>
-              </div>
+          </li>
+          <!--<li><a href="comparison.html">Comparison</a></li>-->
+          <li><a href="data.html">Data</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- Creates the Overall Grid -->
+    <div class= "container">
+        <section>
+            <div class="col-md-12">
+                <article class="description-content">
+                <h1>Bubblechart</h1>
+                <hr>
+                <img class="image-main" src="Images/Fig2.png"/>
+                <p>Text of bubblechart conclusions
+                </p>
+                </article>
             </div>
-          </section>
-          <!-- End of the Visualizations imageNav Area -->
-
-        </div>
-      </section>
+        </section>
     </div>
-    <!-- End of container -->
 
-    <!-- Start of footer -->
-    <footer class="footer navbar-fixed-bottom">
-      <div class="two-toned-footer-color"></div>
-      <p class="text-muted text-muted-footer text-center">
-        &copy; Copyright Coding Bootcamp 2017
-      </p>
-    </footer>
-    <!-- End of footer -->
+  <!--<script src="chart.js"></script>-->
 
-    <!-- jQuery CDN -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
-    <!-- Bootstrap CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  </body>
+</body>
 
 </html>
